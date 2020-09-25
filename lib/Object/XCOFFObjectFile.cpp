@@ -481,7 +481,8 @@ Expected<XCOFFStringTable>
 XCOFFObjectFile::parseStringTable(const XCOFFObjectFile *Obj, uint64_t Offset) {
   // If there is a string table, then the buffer must contain at least 4 bytes
   // for the string table's size. Not having a string table is not an error.
-  if (auto EC = Binary::checkOffset(
+//  if (auto EC = Binary::checkOffset(
+  if (Binary::checkOffset(
           Obj->Data, reinterpret_cast<uintptr_t>(Obj->base() + Offset), 4))
     return XCOFFStringTable{0, nullptr};
 

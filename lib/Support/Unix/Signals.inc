@@ -385,7 +385,7 @@ static RETSIGTYPE SignalHandler(int Sig) {
 }
 
 static RETSIGTYPE InfoSignalHandler(int Sig) {
-  SaveAndRestore<int> SaveErrnoDuringASignalHandler(errno);
+  SaveAndRestore<volatile int> SaveErrnoDuringASignalHandler(errno);
   if (SignalHandlerFunctionType CurrentInfoFunction = InfoSignalFunction)
     CurrentInfoFunction();
 }
